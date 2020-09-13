@@ -39,10 +39,7 @@ db.once('open', () => {
 		const messageDetails = change.fullDocument;
 
 		if (change.operationType === 'insert') {
-			pusher.trigger('messages', 'inserted', {
-				name: messageDetails.name,
-				message: messageDetails.message,
-			});
+			pusher.trigger('messages', 'inserted', messageDetails);
 		}
 	});
 });
